@@ -63,7 +63,7 @@ async def chat_handler(request: ChatRequest, db: AsyncSession = Depends(get_db))
         evaluation = risk_engine.evaluate(final_risk, authorized)
         blocked = evaluation["blocked"]
         reasons = evaluation["reasons"]
-        if policy_reason and policy_reason not in reasons:  # Add specific policy reason if not redundant
+        if policy_reason and policy_reason not in reasons: 
              reasons.insert(0, policy_reason) # High priority
 
         # 6. Log to DB
